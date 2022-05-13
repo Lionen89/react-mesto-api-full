@@ -1,0 +1,9 @@
+.element__image{
+    object-fit: cover;
+    width: 282px;
+    height: 282px;
+    cursor: pointer;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}

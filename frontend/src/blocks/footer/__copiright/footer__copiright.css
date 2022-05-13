@@ -1,0 +1,15 @@
+.footer__copiright {
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    color: #545454;
+    margin: 0;
+    padding: 0;
+}
+
+@media screen and (max-width: 680px) {
+    .footer__copiright {
+        font-size: 14px;
+        line-height: 17px;
+    }
+}

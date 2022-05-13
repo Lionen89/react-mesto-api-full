@@ -1,0 +1,11 @@
+.popup__save-button_disabled {
+    border: 1px solid #000000;
+    background-color: transparent;
+    color: #000000;
+    line-height: 21, 78px;
+    opacity: 20%;
+}
+
+.popup__save-button_disabled:hover {
+    opacity: 20%;
+}
