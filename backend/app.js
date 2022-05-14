@@ -9,6 +9,7 @@ const NotFoundError = require('./errors/not-found-err');
 const { createUser, login } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const cors = require('./middlewares/cors');
 
 const {
   PORT = 3001,
@@ -32,6 +33,7 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 });
 
 app.use(requestLogger); // подключаем логгер запросов
+app.use(cors);
 
 app.post('/signin', celebrate({
   body: Joi.object().keys({
