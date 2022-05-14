@@ -27,9 +27,9 @@ function cors(req, res, next) {
     // разрешаем кросс-доменные запросы с этими заголовками
     res.header('Access-Control-Allow-Headers', requestHeaders);
     // завершаем обработку запроса и возвращаем результат клиенту
-    // return res.end();
+    res.end();
   }
-  return next();
+  next();
 }
 module.exports = {
   cors,
