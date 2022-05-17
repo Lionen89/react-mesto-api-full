@@ -6,7 +6,7 @@ const allowedCors = [
 ];
 
 function cors(req, res, next) {
-  const { origin } = req.headers; // Сохраняем источник запроса в переменную origin
+  const { origin } = req.header; // Сохраняем источник запроса в переменную origin
   // проверяем, что источник запроса есть среди разрешённых
   if (allowedCors.includes(origin)) {
     // устанавливаем заголовок, который разрешает браузеру запросы с этого источника
