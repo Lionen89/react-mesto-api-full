@@ -125,11 +125,11 @@ module.exports.login = (req, res, next) => {
   User.findUserByCredentials(email, password)
     .then((user) => {
       const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 's!Cr1T_kEy', { expiresIn: '7d' });
-      res.cookie('jwt', token, {
-        maxAge: 3600000 * 7 * 24,
-        httpOnly: true,
-      })
-        .send({ token });
+      // res.cookie('jwt', token, {
+      //   maxAge: 3600000 * 7 * 24,
+      //   httpOnly: true,
+      // })
+      res.send({ token });
     })
     .catch((err) => next(new UnauthorizedError(err.message)));
 };
