@@ -17,8 +17,7 @@ module.exports = (req, res, next) => {
   }
 
   const token = extractBearerToken(authorization);
-  const token2 = req.cookies.jwt;
-  console.log(token2);
+  // const token2 = req.cookies.jwt;
 
   if (token === undefined) {
     return handleAuthError(res);
