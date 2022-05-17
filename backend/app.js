@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 const express = require('express');
+const cors = require('./middlewares/cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -33,7 +34,7 @@ mongoose.connect('mongodb://localhost:27017/mestodb', {
 });
 
 app.use(requestLogger); // подключаем логгер запросов
-app.use(cors);
+app.use(cors());
 
 app.get('/crash-test', () => {
   setTimeout(() => {
