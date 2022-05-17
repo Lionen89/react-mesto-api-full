@@ -1,16 +1,15 @@
 /* eslint-disable no-console */
 const express = require('express');
-const cors = require('./middlewares/cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const { celebrate, Joi } = require('celebrate');
 const { errors } = require('celebrate');
+const { cors } = require('./middlewares/cors');
 const NotFoundError = require('./errors/not-found-err');
 const { createUser, login } = require('./controllers/users');
 const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const { cors } = require('./middlewares/cors');
 
 const {
   PORT = 3001,
