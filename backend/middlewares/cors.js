@@ -1,8 +1,8 @@
 // Массив доменов, с которых разрешены кросс-доменные запросы
 const allowedCors = [
-  'https://lionen.students.nomoredomains.xyz',
-  'http://lionen.students.nomoredomains.xyz',
-  'http://localhost:3000',
+  'https://lionen.students.nomoredomains.xyz/',
+  'http://lionen.students.nomoredomains.xyz/',
+  'http://localhost:3000/',
 ];
 
 function cors(req, res, next) {
