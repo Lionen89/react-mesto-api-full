@@ -6,18 +6,18 @@ const handleAuthError = () => {
   throw new UnauthorizedError('Необходима авторизация');
 };
 
-// const extractBearerToken = (header) => header.replace('Bearer ', '');
+const extractBearerToken = (header) => header.replace('Bearer ', '');
 
 module.exports = (req, res, next) => {
-  // const { authorization } = req.headers;
+  const { authorization } = req.headers;
   const { NODE_ENV, JWT_SECRET } = process.env;
 
-  // if (!authorization || !authorization.startsWith('Bearer ')) {
-  // return handleAuthError(res);
-  // }
+  if (!authorization || !authorization.startsWith('Bearer ')) {
+    return handleAuthError(res);
+  }
 
-  // const token = extractBearerToken(authorization);
-  const token = req.cookies.jwt;
+  const token = extractBearerToken(authorization);
+  // const token = req.cookies.jwt;
 
   if (token === undefined) {
     return handleAuthError(res);
