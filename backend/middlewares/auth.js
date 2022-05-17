@@ -10,7 +10,8 @@ const extractBearerToken = (header) => header.replace('Bearer ', '');
 
 module.exports = (req, res, next) => {
   const { authorization } = req.headers;
-  const { NODE_ENV, JWT_SECRET } = process.env;
+  // const { NODE_ENV, JWT_SECRET } = process.env;
+  // NODE_ENV === 'production' ? JWT_SECRET : 's!Cr1T_kEy'
 
   if (!authorization || !authorization.startsWith('Bearer ')) {
     return handleAuthError(res);
@@ -21,7 +22,7 @@ module.exports = (req, res, next) => {
   let payload;
 
   try {
-    payload = jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : 's!Cr1T_kEy');
+    payload = jwt.verify(token, 's!Cr1T_kEy');
   } catch (err) {
     next(new UnauthorizedError('Необходима авторизация'));
   }
