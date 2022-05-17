@@ -5,6 +5,7 @@ const ConflictError = require('../errors/conflict-err');
 const BadRequestError = require('../errors/bad-request-err');
 const NotFoundError = require('../errors/not-found-err');
 const UnauthorizedError = require('../errors/unauthorized-err');
+require('dotenv').config();
 
 module.exports.getAllUsers = (req, res, next) => {
   User.find({})
@@ -119,9 +120,10 @@ module.exports.updateAvatar = (req, res, next) => {
 };
 module.exports.login = (req, res, next) => {
   const { email, password } = req.body;
+  const { NODE_ENV, JWT_SECRET } = process.env;
   User.findUserByCredentials(email, password)
     .then((user) => {
-      const token = jwt.sign({ _id: user._id }, 's!Cr1T_kEy', { expiresIn: '7d' });
+      const token = jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 's!Cr1T_kEy', { expiresIn: '7d' });
       res.cookie('jwt', token, {
         maxAge: 3600000 * 7 * 24,
         httpOnly: true,
