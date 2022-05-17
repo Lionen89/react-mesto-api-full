@@ -1,5 +1,6 @@
 const router = require('express').Router(); // создали роутер
 const { celebrate, Joi } = require('celebrate');
+const { regularExpression } = require('../constants');
 const {
   getAllUsers, getlUserById, getCurrentUser, updateProfile, updateAvatar,
 } = require('../controllers/users'); // импортировали контроллеры
@@ -23,9 +24,7 @@ router.patch('/me', celebrate({
 router.patch('/me/avatar', celebrate({
   body: Joi.object().keys({
     avatar: Joi.string()
-      .regex(
-        /^(http:\/\/|https:\/\/|\www.){1}([0-9A-Za-z\-._~:/?#[\]@!$&'()*+,;=]+\.)([A-Za-z]){2,3}(\/)?/,
-      ),
+      .regex(regularExpression),
   }),
 }), updateAvatar);
 
