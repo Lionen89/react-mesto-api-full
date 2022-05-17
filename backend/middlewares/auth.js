@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
 const UnauthorizedError = require('../errors/unauthorized-err');
-require('dotenv').config();
 
 const handleAuthError = () => {
   throw new UnauthorizedError('Необходима авторизация');
